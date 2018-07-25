@@ -19,9 +19,20 @@ const api = (function() {
     };
     $.ajax(query);
   };
+  const updateItem = function(id, updateData, callback) {
+    const query = {
+      url : `${BASE_URL}/items/${id}`,
+      method : 'PATCH',
+      contentType : 'application/json',
+      data : JSON.stringify(updateData),
+      success : callback
+    };
+    $.ajax(query);
+  };
 
   return {
     getItems,
-    createItem
+    createItem,
+    updateItem
   }; 
 }());
