@@ -29,10 +29,19 @@ const api = (function() {
     };
     $.ajax(query);
   };
-
+  const deleteItem = function(id, callback) {
+    const query = {
+      url: `${BASE_URL}/items/${id}`,
+      method: 'DELETE',
+      contentType: 'application/json',
+      success: callback
+    };
+    $.ajax(query);
+  };
   return {
     getItems,
     createItem,
-    updateItem
+    updateItem,
+    deleteItem
   }; 
 }());
