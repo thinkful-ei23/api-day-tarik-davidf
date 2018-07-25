@@ -11,6 +11,10 @@ const store = (function(){
     return this.items.find(item => item.id === id);
   };
 
+  const findAndUpdate = function(id, newData) {
+    const item = this.findById(id);
+    Object.assign(item, newData);
+  };
   const findAndToggleChecked = function(id) {
     const item = this.findById(id);
     item.checked = !item.checked;
@@ -42,14 +46,14 @@ const store = (function(){
     items: [],
     hideCheckedItems: false,
     searchTerm: '',
-
+    findAndUpdate,
     addItem,
     findById,
-    findAndToggleChecked,
     findAndDelete,
-    findAndUpdateName,
     toggleCheckedFilter,
     setSearchTerm,
+    findAndToggleChecked,
+    findAndUpdateName
   };
   
 }());
